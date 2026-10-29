@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SCICS - Admin</title><link rel="stylesheet" href="style.css"></head><body>
+<header><span class="brand">SCICS</span><nav><a href="index.html">Submit complaint</a><a href="track.html">Track complaint</a><a href="admin.html">Admin</a></nav></header>
+<main>
+<h1>Admin panel</h1>
+<div id="msg"></div>
+<div class="card inline"><button class="alt" id="sample">Load sample data</button><button class="danger" id="reset">Clear all data</button>
+<small>Prototype: data is stored in this browser only.</small></div>
+<div class="card"><h2>Complaints</h2><div id="list"></div></div>
+<div class="card"><h2>Manage complaint categories</h2><form class="inline" id="catf"><input id="cat" placeholder="New category"><button>Add category</button></form><div id="cats"></div></div>
+</main>
+<script src="store.js"></script>
+<script>
+const e = SCICS.esc, msg = document.getElementById('msg');
+const say = (t, err) => { msg.innerHTML = '<div class="msg' + (err ? ' err' : '') + '">' + e(t) + '</div>'; };
+const run = fn => { try { fn(); } catch (x) { say(x.message, true); } render(); };
+function render() {
+  const rows = SCICS.listComplaints();
+  document.getElementById('list').innerHTML = rows.length ? '<table><tr><th>Reference ID</th><th>Category / location</th><th>Status</th>' +
+      '</tr>' +
+    rows.map(c => '<tr><td><a href="track.html?id=' + c.id + '">' + c.id + '</a></td><td>' + e(c.category) + '<br><small>' + e(c.location) + '</small></td>' +
+      '<td><span class="badge">' + e(c.status) + '</span>' +  '</td>' +
+      
+       '</tr>').join('') + '</table>'
+    : '<p>No complaints yet. Submit one or load sample data.</p>';
+  document.getElementById('cats').innerHTML = SCICS.getCategories().map(c => '<span class="badge">' + e(c) + '</span> <button class="small danger" data-rc="' + e(c) + '">remove</button> ').join('');
+}
+document.addEventListener('change', ev => {
+  const d = ev.target.dataset;
+  
+  
+});
+document.addEventListener('click', ev => { const n = ev.target.dataset.rc; if (n) run(() => SCICS.removeCategory(n)); });
+document.getElementById('catf').addEventListener('submit', ev => { ev.preventDefault(); run(() => { SCICS.addCategory(document.getElementById('cat').value); document.getElementById('cat').value = ''; say('Category added.'); }); });
+document.getElementById('sample').onclick = () => run(() => { SCICS.loadSample(); say('Sample data loaded.'); });
+document.getElementById('reset').onclick = () => run(() => { SCICS.resetAll(); say('All data cleared.'); });
+
+render();
+</script></body></html>

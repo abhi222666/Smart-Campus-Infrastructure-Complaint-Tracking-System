@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SCICS - Track complaint</title><link rel="stylesheet" href="style.css"></head><body>
+<header><span class="brand">SCICS</span><nav><a href="index.html">Submit complaint</a><a href="track.html">Track complaint</a><a href="admin.html">Admin</a></nav></header>
+<main>
+<h1>Track a complaint</h1>
+<form class="card inline" id="f"><input id="id" placeholder="e.g. SCICS-2026-0001" style="min-width:260px"><button>Track</button></form>
+<div id="out"></div>
+</main>
+<script src="store.js"></script>
+<script>
+const e = SCICS.esc, out = document.getElementById('out'), box = document.getElementById('id');
+function show(id) {
+  const c = SCICS.getComplaint(id);
+  if (!c) { out.innerHTML = '<div class="msg err">No complaint found with that reference ID.</div>'; return; }
+  out.innerHTML = '<div class="card"><h2>Reference ID: <span class="ref">' + e(c.id) + '</span></h2>' +
+    '<p>Status: <span class="badge">' + e(c.status) + '</span>' +
+     '</p>' +
+    '<table><tr><th>Category</th><td>' + e(c.category) + '</td></tr><tr><th>Location</th><td>' + e(c.location) + '</td></tr>' +
+    '<tr><th>Description</th><td>' + e(c.description) + '</td></tr><tr><th>Submitted</th><td>' + new Date(c.createdAt).toLocaleString() + '</td></tr>' +
+     '</table>' +
+    
+     '</div>';
+}
+document.getElementById('f').addEventListener('submit', ev => { ev.preventDefault(); show(box.value); });
+const q = new URLSearchParams(location.search).get('id'); if (q) { box.value = q; show(q); }
+</script></body></html>
