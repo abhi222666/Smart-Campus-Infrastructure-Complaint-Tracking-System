@@ -1,0 +1,15 @@
+*{box-sizing:border-box}body{font-family:system-ui,Segoe UI,Arial,sans-serif;margin:0;background:#f4f6fb;color:#1f2937}
+header{background:#0f4c81;color:#fff;padding:12px 24px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+header a{color:#fff;text-decoration:none}header .brand{font-weight:700;font-size:1.25rem}header nav{display:flex;gap:16px;flex-wrap:wrap}
+main{max-width:1000px;margin:24px auto;padding:0 16px}h1{margin-top:0}
+.card{background:#fff;border-radius:8px;padding:18px;box-shadow:0 1px 3px #0002;margin-bottom:16px}
+label{display:block;font-weight:600;margin-bottom:12px}input,select,textarea{display:block;width:100%;padding:8px;margin-top:4px;border:1px solid #cbd5e1;border-radius:6px;font:inherit;font-weight:400}
+button,.btn{background:#0f4c81;color:#fff;border:0;border-radius:6px;padding:9px 16px;cursor:pointer;font:inherit;text-decoration:none;display:inline-block}
+button.alt{background:#0f766e}button.danger{background:#b91c1c}button.small{padding:4px 10px;font-size:.85rem}
+table{width:100%;border-collapse:collapse;background:#fff}th,td{padding:8px 10px;border-bottom:1px solid #e5e7eb;text-align:left;vertical-align:top}th{background:#dbeafe}
+.msg{padding:10px 14px;border-radius:6px;background:#dcfce7;margin-bottom:12px}.msg.err{background:#fee2e2}
+.badge{padding:2px 8px;border-radius:99px;background:#e5e7eb;font-size:.8rem}.badge.Critical,.badge.High,.badge.esc{background:#fecaca}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.stat{background:#fff;padding:14px;border-radius:8px;box-shadow:0 1px 3px #0002}.stat b{font-size:1.8rem;color:#0f4c81;display:block}
+.bar{display:flex;align-items:center;gap:8px;margin:6px 0}.bar i{display:block;height:16px;background:#0f4c81;border-radius:4px}.bar span{min-width:130px}
+.inline{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.inline select,.inline input{width:auto;margin:0}
+.ref{font-size:1.3rem;background:#dbeafe;padding:2px 8px;border-radius:4px}ul.timeline{padding-left:18px}small{color:#6b7280}
