@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SCICS - Smart Campus Infrastructure Complaint & Tracking System
 
 Agile Software Development (CSET455) team project. Prototype built with HTML, CSS and JavaScript; data is kept in the browser (localStorage).
@@ -18,3 +19,7 @@ Use **Admin -> Load sample data** to fill the pages with SAMPLE complaints for s
 | 2 Maintenance and Assignment | SCICS-9, 10, 13 | Assign to maintenance staff, update progress, view complaint history |
 | 3 Priority, Escalation and Notifications | SCICS-11, 12, 16 | Set priority, escalate overdue complaints, in-app notifications |
 | 4 Dashboard and Reporting | SCICS-14, 15 | Dashboard statistics, filtered reports, CSV export |
+=======
+# 
+Smart Campus Infrastructure Complaint & Tracking System
+>>>>>>> c83f41776368a1b34dbf0af12ac0c0cc8cb7d0d7
